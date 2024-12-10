@@ -1,0 +1,166 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.wrapper{
+    padding: 1%;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.clearfix{
+    float: none;
+    clear: both;
+}
+
+.tbl-full{
+    width: 100%;
+}
+
+.tbl-30{
+    width: 30%;
+}
+
+table tr th{
+    border-bottom: 1px solid black;
+    padding: 1%;
+    text-align: left;
+}
+
+table td{
+    padding: 1%;
+}
+
+.btn-primary{
+    background-color: #1e90ff;
+    padding: 1%;
+    color: white;
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+.btn-primary:hover{
+    background-color: #3742fa;
+}
+
+.btn-secondary{
+    background-color: #2ecc71;
+    padding: 1%;
+    color: white;
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+.btn-secondary:hover{
+    background-color: #27ae60;
+}
+
+.btn-danger{
+    background-color: #e74c3c;
+    padding: 1%;
+    color: white;
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+.btn-danger:hover{
+    background-color: #c0392b;
+}
+
+.success{
+    color: #27ae60;
+}
+
+.error{
+    color: #c0392b;
+}
+
+
+
+/* menu */
+.menu{
+    border-bottom: 1px solid black;
+}
+
+.menu ul{
+    list-style-type: none;
+}
+
+.menu ul li{
+    display: inline;
+    padding: 1%;
+}
+
+.menu ul li a{
+    text-decoration: none;
+    font-weight: bolder;
+    color: #ff6b81;
+}
+
+.menu ul li a:hover{
+    color: #ff4757;
+}
+
+
+/* main-content */
+.main-content{
+    background-color: #f1f2f6;
+    padding: 3% 0;
+}
+
+.col-4{
+    width: 18%;
+    background-color: white;
+    margin: 1%;
+    float: left;
+    padding: 2%;
+}
+
+/* footer */
+.footer{
+    background-color: #ff4757;
+    color: white;
+}
+
+
+/* form */
+form {
+    background-color: white;
+    box-shadow: 2px 2px 8px -1px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 2px 2px 8px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 2px 8px -1px rgba(0,0,0,0.75);
+    width: 30%;
+    border-radius: 10px;
+    margin-left: 35%;
+    margin-top: 2%;
+    padding: 20px;
+}
+
+input {
+    padding: 2%;
+    margin-bottom: 2%;
+    margin-left: 25%;
+    margin-top: 5%;
+    width: 50%;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(244, 252, 255);
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 25%;
+    width: 50%;
+    padding-top: 10px;
+}
+
+
+
