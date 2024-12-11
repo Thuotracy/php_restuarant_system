@@ -138,7 +138,7 @@ form {
     width: 30%;
     border-radius: 10px;
     margin-left: 35%;
-    margin-top: 2%;
+    margin-top: 10%;
     padding: 20px;
 }
 
@@ -161,6 +161,18 @@ input {
     width: 50%;
     padding-top: 10px;
 }
+
+
+
+
+/* .login{
+    border: 1px solid black;
+    width: 20%;
+    margin: 10% auto;
+    padding: 2%;
+} */
+
+
 
 
 

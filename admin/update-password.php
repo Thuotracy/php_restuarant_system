@@ -113,7 +113,7 @@
             // header("location:" . SITEURL . 'admin/manage-admin.php');
             // exit();
         }
-    }        
+    }      
 ?>
 
 <?php include('partials/footer.php');?>
