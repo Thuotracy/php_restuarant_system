@@ -15,7 +15,7 @@
             echo $_SESSION['upload'];
             unset($_SESSION['upload']);
         }
-        ?>
+        ?><br><br>
 
         <form action="" method="POST" enctype="multipart/form-data">
             <div class="form-group">
@@ -64,7 +64,7 @@
 
             // rename image
 
-            $ext = end(explode('.', $image_name));
+            $ext = pathinfo($image_name, PATHINFO_EXTENSION);
 
             $image_name  = "Food_Category_".rand(000, 999).'.'.$ext; 
 
