@@ -2,7 +2,7 @@
 
 <div class="main-content">
     <div class="wrapper">
-        <h2>UPDATE ADMIN</h2><br><br>
+        <h2 class="text-center">UPDATE ADMIN</h2><br><br>
 
         <?php
         // Fetch admin data to display in the form
@@ -40,7 +40,7 @@
             </div>
             <div class="form-group">
                 <input type="hidden" name="id" value="<?php echo $id; ?>">
-                <input type="submit" name="submit" value="Update Admin" class="btn-secondary">
+                <input type="submit" name="submit" value="Update Admin" class="btn">
             </div>
         </form>
     </div>

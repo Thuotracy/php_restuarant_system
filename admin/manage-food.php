@@ -3,7 +3,7 @@
           <!-- Main Section -->
           <div class="main-content">
             <div class="wrapper">
-               <h2>MANAGE FOOD</h2><br><br>
+               <h2 class="text-center">MANAGE FOOD</h2><br><br>
 
 
                <?php

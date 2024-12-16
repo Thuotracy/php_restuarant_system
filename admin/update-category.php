@@ -73,31 +73,24 @@
                 </td>
             </div>
 
+            <br>
+
             <div class="form-group">
                 <label for="title">New Image</label>
                 <input type="file" id="image" name="image">
             </div>
 
-            <table>
-                <tr>
-                    <td>Featured</td>
-                    <td>
-                    <input type="radio" name="featured" value="Yes" id="featured-yes" <?php if ($featured == "Yes") echo "checked"; ?>> <label for="featured-yes">Yes</label>
-                    <input type="radio" name="featured" value="No" id="featured-no" <?php if ($featured == "No") echo "checked"; ?>> <label for="featured-no">No</label>
+            <label>Featured:</label>
+                <input type="radio" id="featured-yes" value="Yes" name="featured" <?php if ($featured == "Yes") echo "checked"; ?>><label for="Yes" class="light">Yes</label><br>
+                <input type="radio" id="featured-no" value="No" name="featured" <?php if ($featured == "No") echo "checked"; ?>><label for="No" class="light">No</label>
 
-                    </td>
-                </tr>
-                <tr>
-                    <td>Active</td>
-                    <td>
-                    <input type="radio" name="active" value="Yes" id="active-yes" <?php if ($active == "Yes") echo "checked"; ?>> <label for="active-yes">Yes</label>
-                    <input type="radio" name="active" value="No" id="active-no" <?php if ($active == "No") echo "checked"; ?>> <label for="active-no">No</label>
-                    </td>
-                </tr>
-            </table>
+                <label>Active:</label>
+                <input type="radio" id="active-yes" value="Yes" name="active" <?php if ($active == "Yes") echo "checked"; ?>><label for="Yes" class="light">Yes</label><br>
+                <input type="radio" id="active-no" value="No" name="active" <?php if ($active == "No") echo "checked"; ?>><label for="No" class="light">No</label>
+
 
             <div class="form-group">
-                <input type="submit" name="submit" value="Update Category" class="btn-secondary">
+                <input type="submit" name="submit" value="Update Category" class="btn">
             </div>
         </form>
 

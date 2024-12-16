@@ -3,7 +3,7 @@
           <!-- Main Section -->
           <div class="main-content">
             <div class="wrapper">
-               <h2>MANAGE CATEGORY</h2><br><br>
+               <h2 class="text-center">MANAGE CATEGORY</h2><br><br>
 
                <?php
                 if(isset($_SESSION['add'])){
@@ -34,7 +34,6 @@
                     <th>Image</th>
                     <th>Featured</th>
                     <th>Active</th>
-                    <th>Actions</th>
                     <th>Actions</th>
                 </tr>
 

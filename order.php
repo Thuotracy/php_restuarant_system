@@ -1,72 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <!-- Important to make website responsive -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restaurant Website</title>
+<?php include('partials-frontend/menu.php'); ?>  
 
-    <!-- Link our CSS file -->
-    <link rel="stylesheet" href="css/style.css">
-</head>
+<?php
+    if (isset($_GET['food_id'])) {
+        $food_id = $_GET['food_id'];
 
-<body>
-    <!-- Navbar Section Starts Here -->
-    <section class="navbar">
-        <div class="container">
-            <div class="logo">
-                <a href="#" title="Logo">
-                    <img src="images/logo.png" alt="Restaurant Logo" class="img-responsive">
-                </a>
-            </div>
+        // Use prepared statements to prevent SQL injection
+        $stmt = $conn->prepare("SELECT * FROM tbl_food WHERE id = ?");
+        $stmt->bind_param("i", $food_id);
+        $stmt->execute();
+        $res = $stmt->get_result();
 
-            <div class="menu text-right">
-                <ul>
-                    <li>
-                        <a href="index.html">Home</a>
-                    </li>
-                    <li>
-                        <a href="categories.html">Categories</a>
-                    </li>
-                    <li>
-                        <a href="foods.html">Foods</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
-                </ul>
-            </div>
+        $count = $res->num_rows;
 
-            <div class="clearfix"></div>
-        </div>
-    </section>
-    <!-- Navbar Section Ends Here -->
+        if ($count == 1) {
+            $row = $res->fetch_assoc();
+
+            $title = $row['title'];
+            $price = $row['price'];
+            $image_name = $row['image_name'];
+        } else {
+            header('location:' . SITEURL); 
+            exit();
+        }
+    } else {
+        header('location:' . SITEURL);
+        exit();
+    }
+    
+
+    // Display session message if set
+    if (isset($_SESSION['order']) && !empty($_SESSION['order'])) {
+        echo $_SESSION['order'];
+        unset($_SESSION['order']);
+    }
+    ?>
 
     <!-- fOOD sEARCH Section Starts Here -->
     <section class="food-search">
         <div class="container">
-            
             <h2 class="text-center text-white">Fill this form to confirm your order.</h2>
 
-            <form action="#" class="order">
+            <form action="" method="POST" class="order">
                 <fieldset>
                     <legend>Selected Food</legend>
+                    <?php
+                    if (empty($image_name)) {
+                        echo "<div class='error'>Image Not Available</div>";
+                    } else {
+                        ?>
+                        <div class="food-item">
+                            <div class="food-img">
+                                <img src="<?php echo SITEURL; ?>images/category/<?php echo htmlspecialchars($image_name); ?>" 
+                                    alt="Selected Food" 
+                                    class="img-responsive img-curve">
+                            </div>
+                            <div class="food-menu-desc">
+                                <h3><?php echo htmlspecialchars($title); ?></h3>
+                                <input type="hidden" name="food" value="<?php echo htmlspecialchars($title); ?>">
 
-                    <div class="food-menu-img">
-                        <img src="images/menu-pizza.jpg" alt="Chicke Hawain Pizza" class="img-responsive img-curve">
-                    </div>
-    
-                    <div class="food-menu-desc">
-                        <h3>Food Title</h3>
-                        <p class="food-price">$2.3</p>
+                                <p class="food-price">Ksh. <?php echo htmlspecialchars($price); ?></p>
+                                <input type="hidden" name="price" value="<?php echo htmlspecialchars($price); ?>">
 
-                        <div class="order-label">Quantity</div>
-                        <input type="number" name="qty" class="input-responsive" value="1" required>
-                        
-                    </div>
-
+                                <div class="order-label">Quantity</div>
+                                <input type="number" name="qty" class="input-responsive" value="1" required>
+                            </div>
+                        </div>
+                        <?php
+                    }
+                    ?>
                 </fieldset>
-                
+
                 <fieldset>
                     <legend>Delivery Details</legend>
                     <div class="order-label">Full Name</div>
@@ -83,38 +86,46 @@
 
                     <input type="submit" name="submit" value="Confirm Order" class="btn btn-primary">
                 </fieldset>
-
             </form>
 
+            <?php
+            if (isset($_POST['submit'])) {
+                $food = $_POST['food'];
+                $price = $_POST['price'];
+                $qty = $_POST['qty'];
+
+                $total = $price * $qty;
+                $order_date = date("Y-m-d H:i:s");
+                $status = "Ordered";
+
+                $customer_name = $_POST['full-name'];
+                $customer_contact = $_POST['contact'];
+                $customer_email = $_POST['email'];
+                $customer_address = $_POST['address'];
+
+                // Use prepared statements for inserting order details
+                $stmt2 = $conn->prepare("INSERT INTO tbl_order SET 
+                    food = ?, price = ?, qty = ?, total = ?, order_date = ?, 
+                    status = ?, customer_name = ?, customer_contact = ?, 
+                    customer_email = ?, customer_address = ?");
+                $stmt2->bind_param(
+                    "siiissssss", 
+                    $food, $price, $qty, $total, $order_date, 
+                    $status, $customer_name, $customer_contact, 
+                    $customer_email, $customer_address
+                );
+
+                if ($stmt2->execute()) {
+                    $_SESSION['order'] = "<div class='success text-center'>Order Placed Successfully</div>";
+                    header("location:" . SITEURL);
+                } else {
+                    $_SESSION['order'] = "<div class='error text-center'>Failed to Place Order</div>";
+                    header("location:" . SITEURL . 'admin/order.php');
+                }
+            }
+?>
         </div>
     </section>
     <!-- fOOD sEARCH Section Ends Here -->
 
-    <!-- social Section Starts Here -->
-    <section class="social">
-        <div class="container text-center">
-            <ul>
-                <li>
-                    <a href="#"><img src="https://img.icons8.com/fluent/50/000000/facebook-new.png"/></a>
-                </li>
-                <li>
-                    <a href="#"><img src="https://img.icons8.com/fluent/48/000000/instagram-new.png"/></a>
-                </li>
-                <li>
-                    <a href="#"><img src="https://img.icons8.com/fluent/48/000000/twitter.png"/></a>
-                </li>
-            </ul>
-        </div>
-    </section>
-    <!-- social Section Ends Here -->
-
-    <!-- footer Section Starts Here -->
-    <section class="footer">
-        <div class="container text-center">
-            <p>All rights reserved. Designed By <a href="#">Vijay Thapa</a></p>
-        </div>
-    </section>
-    <!-- footer Section Ends Here -->
-
-</body>
-</html>
+<?php include('partials-frontend/footer.php'); ?>  

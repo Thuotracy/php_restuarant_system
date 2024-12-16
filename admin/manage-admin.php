@@ -3,7 +3,7 @@
           <!-- Main Section -->
           <div class="main-content">
             <div class="wrapper">
-               <h2>MANAGE ADMIN</h2><br>
+               <h2 class="text-center">MANAGE ADMIN</h2><br>
 
                <!-- show success message -->
                 <?php

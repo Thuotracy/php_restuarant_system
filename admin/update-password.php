@@ -2,7 +2,7 @@
 
 <div class="main-content">
     <div class="wrapper">
-        <h2>CHANGE PASSWORD</h2><br><br>
+        <h2 class="text-center">CHANGE PASSWORD</h2><br><br>
 
         <!-- Show success or error messages -->
         <?php
@@ -45,7 +45,7 @@
             </div>
             <div class="form-group">
                 <input type="hidden" name="id" value="<?php echo $id; ?>">
-                <input type="submit" name="submit" value="Change Password" class="btn-secondary">
+                <input type="submit" name="submit" value="Change Password" class="btn">
             </div>
         </form>
     </div>

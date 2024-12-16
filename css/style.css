@@ -22,6 +22,26 @@
     border-radius: 15px;
 }
 
+
+.food-item {
+    display: flex; /* Align children side by side */
+    align-items: center; /* Vertically center the image and text */
+    gap: 20px; /* Space between the image and text */
+}
+
+/* Style for the image container */
+.food-img img {
+    max-width: 200px; /* Adjust the size of the image */
+    height: auto;
+    border-radius: 15px; /* Rounded corners */
+}
+
+/* Ensure the text doesn't stretch oddly */
+.food-menu-desc {
+    flex: 1; /* Allows text section to take up remaining space */
+}
+
+
 .text-right{
     text-align: right;
 }
@@ -200,6 +220,14 @@ fieldset{
     font-weight: bold;
 }
 
+.success{
+    color: #27ae60;
+}
+
+.error{
+    color: #c0392b;
+}
+
 
 
 /* CSS for Mobile Size or Smaller Screen */
@@ -257,3 +285,10 @@ fieldset{
         width: 100%;
     }
 }
+
+
+
+
+
+
+

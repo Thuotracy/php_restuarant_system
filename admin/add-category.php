@@ -2,7 +2,7 @@
 
 <div class="main-content">
     <div class="wrapper">
-        <h1>Add Category</h1><br><br>
+        <h1 class="text-center">Add Category</h1><br><br>
 
         <!-- Show success message -->
         <?php
@@ -17,38 +17,40 @@
         }
         ?><br><br>
 
-        <form action="" method="POST" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="title">Category Title</label>
-                <input type="text" id="title" name="title" placeholder="Category Title" required>
-            </div>
 
-            <div class="form-group">
-                <label for="title">Upload Image</label>
-                <input type="file" id="image" name="image">
-            </div>
+    <div class="row">
+        <div class="col-md-12">
+            <form action="" method="post" enctype="multipart/form-data">
+                
+                <fieldset>
+                               
+                    <label for="name">Category Title:</label>
+                    <input type="text" id="title" name="title">
+                    
+                    <label for="email">Upload Image:</label>
+                    <input type="file" id="image" name="image">
+                    
+                    <label>Featured:</label>
+                    <input type="radio" id="featured-yes" value="Yes" name="featured"><label for="Yes" class="light">Yes</label><br>
+                    <input type="radio" id="featured-no" value="No" name="featured"><label for="No" class="light">No</label>
 
-            <table>
-                <tr>
-                    <td>Featured</td>
-                    <td>
-                        <input type="radio" name="featured" value="Yes" id="featured-yes"> <label for="featured-yes">Yes</label>
-                        <input type="radio" name="featured" value="No" id="featured-no"> <label for="featured-no">No</label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Active</td>
-                    <td>
-                        <input type="radio" name="active" value="Yes" id="active-yes"> <label for="active-yes">Yes</label>
-                        <input type="radio" name="active" value="No" id="active-no"> <label for="active-no">No</label>
-                    </td>
-                </tr>
-            </table>
+                    <label>Active:</label>
+                    <input type="radio" id="active-yes" value="Yes" name="active"><label for="Yes" class="light">Yes</label><br>
+                    <input type="radio" id="active-no" value="No" name="active"><label for="No" class="light">No</label>
+                    
+                    </fieldset>
+                   
+            
+                    <input type="submit" name="submit" value="Add Category" class="btn">
+                
+            </form>
+        </div>
+    </div>
 
-            <div class="form-group">
-                <input type="submit" name="submit" value="Add Category" class="btn-secondary">
-            </div>
-        </form>
+
+
+
+        
 
         <?php
        if (isset($_POST['submit'])) {
