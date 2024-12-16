@@ -18,7 +18,7 @@
         <div class="container">
             <div class="logo">
                 <a href="#" title="Logo">
-                    <img src="images/logo.png" alt="Restaurant Logo" class="img-responsive">
+                    <img src="images/logo2.png" alt="Restaurant Logo" class="img-responsive">
                 </a>
             </div>
 
@@ -34,7 +34,7 @@
                         <a href="<?php echo SITEURL; ?>foods.php">Foods</a>
                     </li>
                     <li>
-                        <a href="#">Contact</a>
+                        <a href="<?php echo SITEURL; ?>reservtion-frontend.php">Reservation</a>
                     </li>
                 </ul>
             </div>

@@ -3,6 +3,8 @@
     <!-- fOOD sEARCH Section Starts Here -->
     <section class="food-search text-center">
         <div class="container">
+
+            <h1>Enjoy fresh, delicious dishes. Reserve a table or order online today!</h1><br><br><br><br>
             
             <form action="<?php echo SITEURL; ?>food-search.php" method="POST">
                 <input type="search" name="search" placeholder="Search for Food.." required>

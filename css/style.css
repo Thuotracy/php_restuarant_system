@@ -22,26 +22,6 @@
     border-radius: 15px;
 }
 
-
-.food-item {
-    display: flex; /* Align children side by side */
-    align-items: center; /* Vertically center the image and text */
-    gap: 20px; /* Space between the image and text */
-}
-
-/* Style for the image container */
-.food-img img {
-    max-width: 200px; /* Adjust the size of the image */
-    height: auto;
-    border-radius: 15px; /* Rounded corners */
-}
-
-/* Ensure the text doesn't stretch oddly */
-.food-menu-desc {
-    flex: 1; /* Allows text section to take up remaining space */
-}
-
-
 .text-right{
     text-align: right;
 }
@@ -61,11 +41,11 @@
 }
 
 a{
-    color: #ff6b81;
+    color: #e67e22;
     text-decoration: none;
 }
 a:hover{
-    color: #ff4757;
+    color: #d35400;
 }
 
 .btn{
@@ -75,13 +55,13 @@ a:hover{
     border-radius: 5px;
 }
 .btn-primary{
-    background-color: #ff6b81;
+    background-color: #e67e22;
     color: white;
     cursor: pointer;
 }
 .btn-primary:hover{
     color: white;
-    background-color: #ff4757;
+    background-color: #d35400;
 }
 h2{
     color: #2f3542;
@@ -130,11 +110,11 @@ fieldset{
 /* CSS for Food SEarch Section */
 
 .food-search{
-    background-image: url(../images/bg.jpg);
+    background-image: url(../images/background_img.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    padding: 7% 0;
+    padding: 15% 0;
 }
 
 .food-search input[type="search"]{
@@ -143,6 +123,11 @@ fieldset{
     font-size: 1rem;
     border: none;
     border-radius: 5px;
+}
+
+h1{
+    font-size: 40px;
+    margin-top: -12%;
 }
 
 
@@ -220,14 +205,6 @@ fieldset{
     font-weight: bold;
 }
 
-.success{
-    color: #27ae60;
-}
-
-.error{
-    color: #c0392b;
-}
-
 
 
 /* CSS for Mobile Size or Smaller Screen */
@@ -285,9 +262,6 @@ fieldset{
         width: 100%;
     }
 }
-
-
-
 
 
 
