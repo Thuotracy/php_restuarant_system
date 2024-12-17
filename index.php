@@ -4,6 +4,8 @@
     <section class="food-search text-center">
         <div class="container">
 
+            
+
             <h1>Enjoy fresh, delicious dishes. Reserve a table or order online today!</h1><br><br><br><br>
             
             <form action="<?php echo SITEURL; ?>food-search.php" method="POST">
@@ -16,6 +18,7 @@
     
 
     <?php
+        
         if(isset($_SESSION['order'])){
             echo $_SESSION['order'];
             unset($_SESSION['order']);

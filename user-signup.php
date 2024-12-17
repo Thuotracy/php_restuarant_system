@@ -6,7 +6,6 @@
         <!-- <link rel="stylesheet" href="../css/admin.css"> -->
         <!-- <link rel="stylesheet" href="css/style.css"> -->
     </head>
-
     <style>
         body {
         font-family: 'Nunito', sans-serif;
@@ -128,32 +127,17 @@
     <body>
         <div class="login">
             <form action="" method="POST">
-                <h2 class="text-center">LOGIN</h2>
+                <h2 class="text-center">SIGN UP</h2>
+                <p>Already Have An Account?  <a href="<?php echo SITEURL; ?>user-login.php">Login!</a></p>
+            <!-- show success message -->
 
-                <p>Don't Have An Account Yet?  <a href="<?php echo SITEURL; ?>user-signup.php">Sign Up!</a></p>
-
-                <?php
-
-                if (isset($_SESSION['login'])) {
-                    echo $_SESSION['login'];
-                    unset($_SESSION['login']);
+            <?php
+                if(isset($_SESSION['add-user'])){
+                    echo $_SESSION['add-user'];
+                    unset($_SESSION['add-user']);
                 }
+            ?>
 
-                if (isset($_SESSION['not-login'])) {
-                    echo $_SESSION['not-login'];
-                    unset($_SESSION['not-login']);
-                }
-
-                if (isset($_SESSION['logout'])) {
-                    echo $_SESSION['logout'];
-                    unset($_SESSION['logout']);
-                }
-
-                if (isset($_SESSION['no-login-message'])) {
-                    echo $_SESSION['no-login-message'];
-                    unset($_SESSION['no-login-message']);
-                }
-                ?><br><br>
 
                 <div class="form-group">
                     <input type="number" name="id_no" placeholder="Enter ID Number" required>
@@ -162,39 +146,41 @@
                     <input type="text" name="full_name" placeholder="Enter Username" required>
                 </div>
                 <div class="form-group">
+                    <input type="email" name="email" placeholder="Enter Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="number" name="contact" placeholder="Enter Contact" required>
+                </div>
+                <div class="form-group">
                     <input type="password" name="password" placeholder="Enter Password" required>
                 </div>
                 <div class="form-group">
-                    <input type="submit" name="submit" value="Login" class="btn-user">
+                    <input type="submit" name="submit" value="Sign Up" class="btn-user">
                 </div>
             </form>
         </div>
     </body>
 </html>
 
+
 <?php
-// login process
 if (isset($_POST['submit'])) {
-    session_start(); // Start session to use session variables
+    $id_no = $_POST['id_no'];
+    $full_name = $_POST['full_name'];
+    $email = $_POST['email'];
+    $contact = $_POST['contact'];
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-    // Sanitize input
-    $id_no = filter_input(INPUT_POST, 'id_no', FILTER_SANITIZE_NUMBER_INT);
-    $full_name = mysqli_real_escape_string($conn, $_POST['full_name']);
-    $password = mysqli_real_escape_string($conn, $_POST['password']);
+    $stmt = $conn->prepare("INSERT INTO tbl_user (id_no, full_name, email, contact, password) VALUES (?, ?, ?, ?, ?)");
+    $stmt->bind_param("issis", $id_no, $full_name, $email, $contact ,$password);
 
-    // Query the database for the user
-    $sql = "SELECT * FROM tbl_user WHERE id_no='$id_no' AND full_name='$full_name'";
-    $res = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_assoc($res);
-
-    if ($row && password_verify($password, $row['password'])) {
-        $_SESSION['login'] = "<div class='success'>Login Successful</div>";
-        $_SESSION['user'] = $row['full_name'];
-
-        header("location:" . SITEURL);
-    } else {
-        $_SESSION['not-login'] = "<div class='error text-center'>Incorrect ID Number, full_name, or Password</div>";
+    if ($stmt->execute()) {
+        $_SESSION['add-user'] = "<div class='success'>User Created Successfully</div>";
         header("location:" . SITEURL . 'user-login.php');
+    } else {
+        $_SESSION['add-user'] = "<div class='error'>Failed to Create User</div>";
+        header("location:" . SITEURL . 'user-signup.php');
     }
+    $stmt->close();
 }
 ?>

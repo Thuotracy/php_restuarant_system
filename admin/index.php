@@ -65,6 +65,19 @@
                     <h2><?php echo $count; ?></h2><br/>
                     Orders
                 </div>
+
+                <div class="col-4 text-center">
+                <?php  
+                    $sql = "SELECT * FROM  tbl_order";
+
+                    $res = mysqli_query($conn, $sql);
+
+                    $count = mysqli_num_rows($res);
+                ?>
+
+                    <h2><?php echo $count; ?></h2><br/>
+                    Reservation
+                </div>
             </div>
 
             <div class="clearfix"></div>

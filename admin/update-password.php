@@ -33,21 +33,24 @@
             }
         ?>
 
-        <form action="" method="POST">
-            <div class="form-group">
-                <input type="password" name="current_password" placeholder="Current Password">
+        <div class="row">
+            <div class="col-md-12">
+                <form action="" method="POST">
+                    <label for="name">Current Password:</label>
+                    <input type="password" name="current_password">
+
+                    <label for="name">New Password:</label>
+                    <input type="password" name="new_password">
+
+                    <label for="name">Confirm Password:</label>
+                    <input type="password" name="confirm_password">
+
+                    <input type="hidden" name="id" value="<?php echo $id; ?>">
+                    <input type="submit" name="submit" value="Change Password" class="btn">
+                </form>
             </div>
-            <div class="form-group">
-                <input type="password" name="new_password" placeholder="New Password">
-            </div>
-            <div class="form-group">
-                <input type="password" name="confirm_password" placeholder="Confirm Password">
-            </div>
-            <div class="form-group">
-                <input type="hidden" name="id" value="<?php echo $id; ?>">
-                <input type="submit" name="submit" value="Change Password" class="btn">
-            </div>
-        </form>
+        </div>
+
     </div>
 </div>
 

@@ -31,20 +31,26 @@
         }
         ?>
 
-        <form action="" method="POST">
-            <div class="form-group">
-                <input type="text" name="full_name" value="<?php echo htmlspecialchars($full_name); ?>" required>
+        <div class="row">
+            <div class="col-md-12">
+                <form action="" method="POST">
+
+                    <label for="name">Full Name:</label>
+                    <input type="text"  name="full_name" value="<?php echo htmlspecialchars($full_name); ?>" required>
+
+                    <label for="username">User Name:</label>
+                    <input type="text"  name="username" value="<?php echo htmlspecialchars($username); ?>" required>
+
+                  
+                    
+                    <input type="hidden" name="id" value="<?php echo $id; ?>">
+                    <input type="submit" name="submit" value="Update Admin" class="btn">
+                   
+                </form>
             </div>
-            <div class="form-group">
-                <input type="text" name="username" value="<?php echo htmlspecialchars($username); ?>" required>
-            </div>
-            <div class="form-group">
-                <input type="hidden" name="id" value="<?php echo $id; ?>">
-                <input type="submit" name="submit" value="Update Admin" class="btn">
-            </div>
-        </form>
-    </div>
-</div>
+        </div>
+
+        
 
 <?php
 // Process form submission
@@ -67,5 +73,9 @@ if (isset($_POST['submit'])) {
     $stmt->close();
 }
 ?>
+
+</div>
+</div>
+
 
 <?php include('partials/footer.php'); ?>

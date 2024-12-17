@@ -12,28 +12,24 @@
                 }
         ?>
 
+        <div class="row">
+            <div class="col-md-12">
+                <form action="" method="POST">
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="full_name" name="full_name">
 
-        <form action="" method="POST">
-            <div class="form-group">
-                <input type="text" name="full_name" placeholder="Full Name" required>
-            </div>
-            <div class="form-group">
-                <input type="text" name="username" placeholder="Username" required>
-            </div>
-            <div class="form-group">
-                <input type="password" name="password" placeholder="Password" required>
-            </div>
-            <div class="form-group">
-                <input type="submit" name="submit" value="Add Admin" class="btn">
-            </div>
-        </form>
-    </div>
-</div>
-       
+                    <label for="username">User Name:</label>
+                    <input type="text" id="username" name="username">
 
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password">
 
+                    <input type="submit" name="submit" value="Add Admin" class="btn">
+                    
+                </form>
+            </div>
+        </div>
 
-<?php include('partials/footer.php');?>
 
 <?php
 if (isset($_POST['submit'])) {
@@ -54,3 +50,8 @@ if (isset($_POST['submit'])) {
     $stmt->close();
 }
 ?>
+
+</div>
+</div>
+
+<?php include('partials/footer.php'); ?>

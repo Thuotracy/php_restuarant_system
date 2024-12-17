@@ -84,7 +84,7 @@
                     <div class="order-label">Address</div>
                     <textarea name="address" rows="10" placeholder="Street, City, Country" class="input-responsive" required></textarea>
 
-                    <input type="submit" name="submit" value="Confirm Order" class="btn btn-primary">
+                    <input type="submit" name="submit" value="Confirm Order" class="btn">
                 </fieldset>
             </form>
 

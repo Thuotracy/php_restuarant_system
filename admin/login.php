@@ -1,4 +1,4 @@
-<?php include('../config/constant.php') ?>
+<?php include('config/constant.php'); ?>
 
 <html>
     <head>
@@ -12,6 +12,7 @@
                 <h2 class="text-center">LOGIN</h2><br><br>
 
                 <?php
+
                 if (isset($_SESSION['login'])) {
                     echo $_SESSION['login'];
                     unset($_SESSION['login']);
@@ -34,13 +35,16 @@
                 ?><br><br>
 
                 <div class="form-group">
-                    <input type="text" name="username" placeholder="Enter Username" required>
+                    <input type="number" name="id_no" placeholder="Enter ID Number" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="full_name" placeholder="Enter Username" required>
                 </div>
                 <div class="form-group">
                     <input type="password" name="password" placeholder="Enter Password" required>
                 </div>
                 <div class="form-group">
-                    <input type="submit" name="submit" value="Login" class="btn-secondary">
+                    <input type="submit" name="submit" value="Login" class="btn-user">
                 </div>
             </form>
         </div>
@@ -50,22 +54,25 @@
 <?php
 // login process
 if (isset($_POST['submit'])) {
-    $username = mysqli_real_escape_string($conn, $_POST['username']);
+    session_start(); // Start session to use session variables
+
+    // Sanitize input
+    $id_no = filter_input(INPUT_POST, 'id_no', FILTER_SANITIZE_NUMBER_INT);
+    $full_name = mysqli_real_escape_string($conn, $_POST['full_name']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
 
     // Query the database for the user
-    $sql = "SELECT * FROM tbl_admin WHERE username='$username'";
+    $sql = "SELECT * FROM tbl_user WHERE id_no='$id_no' AND username='$full_name'";
     $res = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($res);
 
     if ($row && password_verify($password, $row['password'])) {
         $_SESSION['login'] = "<div class='success'>Login Successful</div>";
-
-        $_SESSION['user'] = $username;
+        $_SESSION['user'] = $row['username'];
 
         header("location:" . SITEURL . 'admin/');
     } else {
-        $_SESSION['not-login'] = "<div class='error text-center'>Incorrect Username or Password</div>";
+        $_SESSION['not-login'] = "<div class='error text-center'>Incorrect ID Number, Username, or Password</div>";
         header("location:" . SITEURL . 'admin/login.php');
     }
 }
