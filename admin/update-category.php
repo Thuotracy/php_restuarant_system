@@ -1,6 +1,6 @@
 <?php include('partials/menu.php'); ?>
 
-<div class="main-content">
+<div class="main-content" managestyle="min-height: 100%;"-tables.php">
     <div class="wrapper">
         <h1>Update Category</h1><br><br>
 

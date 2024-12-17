@@ -1,7 +1,7 @@
 <?php include('partials/menu.php');?>
 
 
-        <div class="main-content">
+        <div class="main-content" managestyle="min-height: 100%;"-tables.php">
             <div class="wrapper">
                 <h2 class="text-center">ADD TABLE</h2>
 
@@ -66,3 +66,5 @@ if (isset($_POST['submit'])) {
     $stmt->close();
 }
 ?>
+
+<?php include('partials/footer.php');?>

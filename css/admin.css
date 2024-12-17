@@ -101,11 +101,11 @@ table td{
 .menu ul li a{
   text-decoration: none;
   font-weight: bolder;
-  color: #ff6b81;
+  color: #e67e22;
 }
 
 .menu ul li a:hover{
-  color: #ff4757;
+  color: #d35400;
 }
 
 

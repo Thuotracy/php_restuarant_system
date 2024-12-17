@@ -1,122 +1,94 @@
 <?php include('partials-frontend/menu.php'); ?>
 
-
-<div class="container">
-    <h3 class="text-center"><br>New Reservation<br></h3>   
-    <div class="row">
-        <div class="col-md-6 offset-md-3">   
- 
-        
-        
-        
-    
 <?php
-if(isset($_SESSION['user_id'])){
-    echo '<p class="text-white bg-dark text-center">Welcome '. $_SESSION['username'] .', Create your reservation here!</p>';
-      
-  //error handling:
-    
-    if(isset($_GET['error3'])){
-        if($_GET['error3'] == "emptyfields") {   //douleuei bazw ta errors apo ta headers.. prp na bgalw to requiered
-            echo '<h5 class="bg-danger text-center">Fill all fields, Please try again!</h5>';
+if (isset($_POST['submit'])) {
+    // Retrieve form data
+    $full_name = $_POST['full_name'];
+    $id_no = $_POST['id_no'];
+    $contact = $_POST['contact'];
+    $table_capacity = $_POST['table_capacity'];
+    $reservation_date = $_POST['reservation_date'];
+    $reservation_time = $_POST['reservation_time'];
+    $table_name = $_POST['table_name']; // New field for table name
+
+    // Insert the data into the tbl_reservation table
+    $sql = "INSERT INTO tbl_reservation (full_name, id_no, contact, table_capacity, reservation_date, reservation_time, table_name) 
+            VALUES ('$full_name', '$id_no', '$contact', '$table_capacity', '$reservation_date', '$reservation_time', '$table_name')";
+
+    $res = mysqli_query($conn, $sql);
+
+    // Check if the reservation query executed successfully
+    if ($res) {
+        // Update the table status to 'Reserved'
+        $update_table_sql = "UPDATE tbl_table SET table_status = 'Reserved' WHERE table_name = '$table_name'";
+        $update_res = mysqli_query($conn, $update_table_sql);
+
+        if ($update_res) {
+            // Display success message
+            $_SESSION['reservation'] = "<div class='success text-center'>Reservation made successfully!</div>";
+            header('location:'.SITEURL); // Redirect to homepage or another page
+        } else {
+            // Display error message
+            $_SESSION['reservation'] = "<div class='error text-center'>Failed to update table status. Try again later.</div>";
+            header('location:'.SITEURL.'reservation.php'); // Redirect to the same page
         }
-        else if($_GET['error3'] == "invalidfname") {   
-            echo '<h5 class="bg-danger text-center">Invalid First Name, Please try again!</h5>';
-        }
-        else if($_GET['error3'] == "invalidlname") {   
-            echo '<h5 class="bg-danger text-center">Invalid Last Name, Please try again!</h5>';
-        }
-        else if($_GET['error3'] == "invalidtele") {   
-            echo '<h5 class="bg-danger text-center">Invalid Telephone, Pleast try again!</h5>';
-        }
-        else if($_GET['error3'] == "invalidcomment") {   
-            echo '<h5 class="bg-danger text-center">Invalid Comment, Pleast try again!</h5>';
-        }
-        else if($_GET['error3'] == "invalidguests") {   
-            echo '<h5 class="bg-danger text-center">Invalid Guests, Pleast try again!</h5>';
-        }
-        else if($_GET['error3'] == "full") {   
-            echo '<h5 class="bg-danger text-center">Reservations are full this date and timezone, Please try again!</h5>';
-        }
+    } else {
+        // Display error message
+        $_SESSION['reservation'] = "<div class='error text-center'>Failed to make reservation. Try again later.</div>";
+        header('location:'.SITEURL.'reservation.php'); // Redirect to the same page
     }
-        if(isset($_GET['reservation'])) {   
-           if($_GET['reservation'] == "success"){ 
-            echo '<h5 class="bg-success text-center">Your reservation was successfull!</h5>';
-        }
-        }
-        echo'<br>';
+}
+?>
 
+<!-- Reservation Form Section Starts Here -->
+<section class="food-search2">
+    <div class="container">
+        <h2 class="text-center text-white">Fill this form to confirm your Reservation.</h2>
 
+        <form action="" method="POST" class="order">
+            <fieldset style="color: white;">
+                <legend>Reservation Details</legend>
+                <div class="order-label">Full Name</div>
+                <input type="text" name="full_name" placeholder="Tracy Wangari" class="input-responsive" required>
 
-    
+                <div class="order-label">ID Number</div>
+                <input type="number" name="id_no" placeholder="12345678" class="input-responsive" required>
 
-    
-    
-     //reservation form  
-    echo '  
-        
-    <div class="signup-form">
-        <form action="includes/reservation.inc.php" method="post">
-            <div class="form-group">
-            <label>First Name</label>
-                <input type="text" class="form-control" name="fname" placeholder="First Name" required="required">
-                <small class="form-text text-muted">First name must be 2-20 characters long</small>
-            </div>
-            <div class="form-group">
-            <label>Last Name</label>
-                <input type="text" class="form-control" name="lname" placeholder="Last Name" required="required">
-                <small class="form-text text-muted">Last name must be 2-20 characters long</small>
-            </div>   
-            <div class="form-group">
-            <label>Enter Date</label>
-        	<input type="date" class="form-control" name="date" placeholder="Date" required="required">
-            </div>
-            <div class="form-group">
-		<label>Enter Time Zone</label>
-		<select class="form-control" name="time">
-		<option>12:00 - 16:00</option>
-		<option>16:00 - 20:00</option>
-		<option>20:00 - 00:00</option>
-		</select>
-            </div>
-            <div class="form-group">
-            <label>Enter number of Guests</label>
-        	<input type="number" class="form-control" min="1" name="num_guests" placeholder="Guests" required="required">
-                <small class="form-text text-muted">Minimum value is 1</small>
-            </div>
-            <div class="form-group">
-            <label for="guests">Enter your Telephone Number</label>
-                <input type="telephone" class="form-control" name="tele" placeholder="Telephone" required="required">
-                <small class="form-text text-muted">Telephone must be 6-20 characters long</small>
-            </div>
-            <div class="form-group">
-            <label>Enter extra Comments</label>
-                <textarea class="form-control" name="comments" placeholder="Comments" rows="3"></textarea>
-                <small class="form-text text-muted">Comments must be less than 200 characters</small>
-            </div>        
-            <div class="form-group">
-		<label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
-            </div>
-            <div class="form-group">
-            <button type="submit" name="reserv-submit" class="btn btn-dark btn-lg btn-block">Submit Reservation</button>
-            </div>
+                <div class="order-label">Phone Number</div>
+                <input type="number" name="contact" placeholder="0700000000" class="input-responsive" required>
+
+                <div class="order-label">Number of People</div>
+                <input type="number" name="table_capacity" placeholder="4 People" class="input-responsive" required>
+
+                <div class="order-label">Table Name</div>
+                <select name="table_name" class="input-responsive" required>
+                    <option value="" disabled selected>Select a Free Table</option>
+                    <?php
+                    // Fetch tables with status 'Free' and matching table_capacity
+                    $sql_table = "SELECT table_name FROM tbl_table WHERE table_status = 'Free'";
+                    $res_table = mysqli_query($conn, $sql_table);
+
+                    if ($res_table && mysqli_num_rows($res_table) > 0) {
+                        while ($row = mysqli_fetch_assoc($res_table)) {
+                            echo "<option value='{$row['table_name']}'>{$row['table_name']}</option>";
+                        }
+                    } else {
+                        echo "<option value='' disabled>No Free Tables Available</option>";
+                    }
+                    ?>
+                </select>
+
+                <div class="order-label">Date</div>
+                <input type="date" name="reservation_date" class="input-responsive" required>
+
+                <div class="order-label">Time</div>
+                <input type="time" name="reservation_time" class="input-responsive" required>
+
+                <input type="submit" name="submit" value="Make Reservation" class="btn">
+            </fieldset>
         </form>
-        <br><br>
     </div>
-    ';  
-    }
-
-    else {
-        echo '	<p class="text-center text-danger"><br>You are currently not logged in!<br></p>
-       <p class="text-center">In order to make a reservation you have to create an account!<br><br><p>';  
-        
-    }
-    ?>
-
-             
-        </div>
-    </div>
-</div>
-
+</section>
+<!-- Reservation Form Section Ends Here -->
 
 <?php include('partials-frontend/footer.php'); ?>

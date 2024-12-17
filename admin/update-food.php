@@ -1,6 +1,6 @@
 <?php include('partials/menu.php'); ?>
 
-<div class="main-content">
+<div class="main-content" style="min-height: 100%;">
     <div class="wrapper">
         <h1>Update Food</h1><br><br>
 

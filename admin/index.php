@@ -1,7 +1,7 @@
 <?php include('partials/menu.php'); ?>
 
           <!-- Main Section -->
-          <div class="main-content">
+          <div class="main-content" managestyle="min-height: 100%;"-tables.php">
             <div class="wrapper">
                <h2 class="text-center">DASHBOARD</h2><br><br>
 
@@ -68,7 +68,7 @@
 
                 <div class="col-4 text-center">
                 <?php  
-                    $sql = "SELECT * FROM  tbl_order";
+                    $sql = "SELECT * FROM  tbl_reservation";
 
                     $res = mysqli_query($conn, $sql);
 

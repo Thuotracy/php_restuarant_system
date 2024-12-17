@@ -1,7 +1,7 @@
 <?php include('partials/menu.php');?>
 
           <!-- Main Section -->
-          <div class="main-content">
+          <div class="main-content" managestyle="min-height: 100%;"-tables.php">
             <div class="wrapper">
                <h2 class="text-center">MANAGE TABLES</h2><br>
 
