@@ -20,7 +20,27 @@
             echo $_SESSION['order'];
             unset($_SESSION['order']);
         }
-    ?>
+    ?><br><br><br>
+
+    <div class="row">
+    
+        <div class="form2" action="">
+           <h2>About Us</h2> <br>
+           <p>
+                Welcome to Plated, where passion for food meets exceptional dining experiences. Founded in 2018, our restaurant is built on the simple philosophy of bringing people together to share authentic, delicious, and memorable meals. <br><br>
+
+                At Plated, we celebrate fresh, locally sourced ingredients crafted into dishes that delight the senses. Our menu is a fusion of classic and contemporary cuisine, inspired by culinary traditions from around the globe and crafted with love by our skilled chefs. <br><br>
+
+                Our mission is to create a warm and inviting atmosphere where friends, family, and food lovers can gather to enjoy high-quality dishes paired with exceptional service. Whether it’s a casual lunch, a romantic dinner, or a special celebration, we strive to make every moment special.
+            </p>
+        </div>
+
+        <div class="image">
+            <img src="images/aboutus.jpg" alt="">
+        </div>
+
+    </div>
+
 
 
     <!-- CAtegories Section Starts Here -->

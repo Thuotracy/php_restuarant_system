@@ -36,7 +36,7 @@
     ?>
 
     <!-- fOOD sEARCH Section Starts Here -->
-    <section class="food-search">
+    <section class="food-search2">
         <div class="container">
             <h2 class="text-center text-white">Fill this form to confirm your order.</h2>
 
@@ -70,7 +70,7 @@
                     ?>
                 </fieldset>
 
-                <fieldset>
+                <fieldset style="color: white;">
                     <legend>Delivery Details</legend>
                     <div class="order-label">Full Name</div>
                     <input type="text" name="full-name" placeholder="Tracy Wangari" class="input-responsive" required>

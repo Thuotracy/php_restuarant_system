@@ -1,8 +1,10 @@
+<?php include('config/constant.php'); ?>
+
 <!-- start of footer section -->
 <section class="footer">
         <div class="box-container">
             <div class="box">
-                <h3><i class="fas fa-lightbulb"> Crestview</i></h3>
+                <h3><i class="fas fa-lightbulb"> Plated</i></h3>
                 <p>Moi South Lake Rd P.O. Box: 1896-20117 Naivasha, Nairobi, Kenya</p>
 
                 <div class="share">
@@ -16,10 +18,10 @@
 
             <div class="box">
                 <h3>Quick links</h3>
-                <a href="home.html" class="link">Home</a>
-                <a href="about.html" class="link">About</a>
-                <a href="courses.html" class="link">Courses</a>
-                <a href="contact.html" class="link">Contact</a>
+                <a class="link" href="<?php echo SITEURL; ?>">Home</a>
+                <a class="link" href="<?php echo SITEURL; ?>categories.php">Categories</a>
+                <a class="link" href="<?php echo SITEURL; ?>foods.php">Foods</a>
+                <a class="link" href="<?php echo SITEURL; ?>reservtion-frontend.php">Reservation</a>
             </div>
 
             <div class="box">

@@ -112,6 +112,15 @@ fieldset{
     padding: 15% 0;
 }
 
+.food-search2 {
+    background-image: url('../images/order_bg1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 5% 0; /* Adjust padding for better spacing */
+    height: auto; /* Adjust height dynamically based on content */
+}
+
 .food-search input[type="search"]{
     width: 50%;
     padding: 1%;
@@ -123,6 +132,32 @@ fieldset{
 h1{
     font-size: 40px;
     margin-top: -12%;
+}
+
+.food-item {
+    display: flex;
+    justify-content: flex-start; /* Align items from the left */
+    align-items: center; /* Vertically center items */
+    gap: 20px; /* Space between image and description */
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Food Image Styling */
+.food-img img {
+    max-width: 150px; /* Set maximum width for image */
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Food Description Styling */
+.food-menu-desc {
+    flex: 1; /* Take remaining space */
+    text-align: left;
+    color: white;
 }
 
 
@@ -284,7 +319,7 @@ h1{
 .footer .box h3 {
     font-size: 18px;
     margin-bottom: 10px;
-    color: #f1c40f; /* Accent color */
+    color: #e67e22; /* Accent color */
 }
 
 .footer .box p {
@@ -303,7 +338,7 @@ h1{
 }
 
 .footer .share a:hover {
-    color: #f1c40f; /* Highlight on hover */
+    color: #e67e22; /* Highlight on hover */
 }
 
 /* Quick Links and Useful Links */
@@ -317,7 +352,7 @@ h1{
 }
 
 .footer .link:hover {
-    color: #f1c40f; /* Highlight on hover */
+    color: #e67e22; /* Highlight on hover */
 }
 
 /* Newsletter Section */
@@ -334,8 +369,8 @@ h1{
 }
 
 .footer .btn {
-    background-color: #f1c40f;
-    color: #222;
+    background-color: #e67e22;
+    color: #ffffff;
     padding: 8px 15px;
     border: none;
     border-radius: 5px;
@@ -346,17 +381,18 @@ h1{
 }
 
 .footer .btn:hover {
-    background-color: #e2b607;
+    background-color: #d35400;
 }
 
 /* Credit Section */
 .footer .credit {
     text-align: center;
-    font-size: 12px;
+    font-size: 16px;
     margin-top: 20px;
-    color: #777;
+    color: #e67e22;
     border-top: 1px solid #444;
-    padding-top: 10px;
+    padding-top: 20px;
+    text-transform: capitalize;
 }
 
 /* Responsive Design */
@@ -372,6 +408,83 @@ h1{
 
     .footer .box {
         margin: 10px 0;
+    }
+}
+
+.success{
+    color: #27ae60;
+}
+
+.error{
+    color: #c0392b;
+}
+
+
+
+/* about us */
+/* Row Container */
+.row {
+    display: flex;
+    flex-wrap: wrap; /* Ensures responsiveness */
+    align-items: center; /* Vertically center align */
+    justify-content: space-between; /* Space between elements */
+    padding: 50px 10%;
+    background-color: #f9f9f9;
+}
+
+/* About Us Section */
+.form2 {
+    flex: 1; /* Takes equal space */
+    padding-right: 40px; /* Adds spacing to the right of text */
+}
+
+.form2 h2 {
+    font-size: 2rem;
+    color: #333;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.form2 p {
+    font-size: 1rem;
+    line-height: 1.8; /* Adds better readability */
+    color: #555;
+    text-align: justify;
+}
+
+/* Image Section */
+.image {
+    flex: 1; /* Equal space as text */
+    display: flex;
+    justify-content: center; /* Centers the image */
+}
+
+.image img {
+    max-width: 70%; /* Ensures image is responsive */
+    height: auto;
+    border-radius: 8px; /* Optional: Rounded corners for the image */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds soft shadow */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column; /* Stack elements vertically */
+        padding: 30px 5%;
+    }
+
+    .form2 {
+        padding-right: 0; /* Remove right padding */
+        margin-bottom: 20px; /* Add spacing below the text */
+    }
+
+    .form2 h2 {
+        font-size: 1.8rem;
+    }
+
+    .form2 p {
+        font-size: 0.95rem;
     }
 }
 
