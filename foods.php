@@ -56,8 +56,8 @@
                                 </div>
 
                                 <div class="food-menu-desc">
-                                    <h4><?php echo $title; ?></h4>
-                                    <p class="food-price"><?php echo $price; ?></p>
+                                    <h4 style="color: black;"><?php echo $title; ?></h4>
+                                    <p class="food-price" style="color: black;"><?php echo $price; ?></p>
                                     <p class="food-detail">
                                     <?php echo $description; ?>
                                     </p>

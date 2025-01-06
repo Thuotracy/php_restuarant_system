@@ -1,4 +1,9 @@
-<?php include('config/constant.php'); ?>
+<?php 
+    include('config/constant.php');
+    include('user-login-check.php');
+
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -35,6 +40,9 @@
                     </li>
                     <li>
                         <a href="<?php echo SITEURL; ?>reservtion-frontend.php">Reservation</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo SITEURL; ?>user-logout.php">Logout</a>
                     </li>
                 </ul>
             </div>

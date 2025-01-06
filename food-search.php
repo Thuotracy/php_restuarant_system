@@ -54,8 +54,8 @@
                             </div>
 
                             <div class="food-menu-desc">
-                                <h4><?php echo htmlspecialchars($title); ?></h4>
-                                <p class="food-price"><?php echo htmlspecialchars($price); ?></p>
+                                <h4 style="color: black;"><?php echo htmlspecialchars($title); ?></h4>
+                                <p class="food-price" style="color: black;"><?php echo htmlspecialchars($price); ?></p>
                                 <p class="food-detail"><?php echo htmlspecialchars($description); ?></p>
                                 <br>
                                 <a href="order.php?food_id=<?php echo $id; ?>" class="btn btn-primary">Order Now</a>
