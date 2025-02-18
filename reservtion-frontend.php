@@ -84,7 +84,7 @@ if (isset($_POST['submit'])) {
                 <input type="number" name="contact" class="input-responsive" required value="<?php echo htmlspecialchars($user_data['contact']); ?>">
 
                 <div class="order-label">Number of People</div>
-                <input type="number" id="table_capacity" name="table_capacity" class="input-responsive" required>
+                <input type="text" id="table_capacity" name="table_capacity" class="input-responsive" required>
                 <button type="button" id="find_tables" class="btn">Find Tables</button><br><br>
 
                 <div class="order-label">Table Name</div>
