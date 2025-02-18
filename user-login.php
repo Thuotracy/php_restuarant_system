@@ -188,9 +188,12 @@ if (isset($_POST['submit'])) {
     $row = mysqli_fetch_assoc($res);
 
     if ($row && password_verify($password, $row['password'])) {
+        // Store user data in session
         $_SESSION['login'] = "<div class='success'>Login Successful</div>";
         $_SESSION['user'] = $row['full_name'];
+        $_SESSION['user_id'] = $row['id_no'];  // Store id_no in session
 
+        // Redirect to homepage or other page
         header("location:" . SITEURL);
     } else {
         $_SESSION['not-login'] = "<div class='error text-center'>Incorrect ID Number, full_name, or Password</div>";
