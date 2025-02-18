@@ -73,7 +73,7 @@
 
                                 <div class="food-menu-desc">
                                     <h4 style="color: black;"><?php echo $title; ?></h4>
-                                    <p class="food-price" style="color: black;"><?php echo $price; ?></p>
+                                    <p class="food-price" style="color: black;">Ksh. <?php echo $price; ?></p>
                                     <p class="food-detail">
                                     <?php echo $description; ?>
                                     </p>
