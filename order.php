@@ -1,4 +1,4 @@
-<!-- <?php include('partials-frontend/menu.php'); ?>  
+<?php include('partials-frontend/menu.php'); ?>  
 
 <?php
  // Ensure session is started
@@ -154,4 +154,4 @@ if (isset($_SESSION['order']) && !empty($_SESSION['order'])) {
 </section>
 <!-- fOOD sEARCH Section Ends Here -->
 
-<?php include('partials-frontend/footer.php'); ?> -->
+<?php include('partials-frontend/footer.php'); ?>
